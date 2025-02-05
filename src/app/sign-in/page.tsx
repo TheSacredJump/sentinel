@@ -108,7 +108,7 @@ const SignIn = () => {
                 <Image src="/logo.png" alt="Sentinel Logo" width={40} height={40} className="mx-auto" />
               </motion.div>
               <motion.h1 
-                className="text-xl font-semibold mt-4 mb-1"
+                className="text-xl font-semibold mt-4 mb-1 text-neutral-50"
                 variants={itemVariants}
               >
                 Log in or sign up
