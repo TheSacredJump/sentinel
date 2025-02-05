@@ -87,7 +87,7 @@ const SignIn = () => {
         </Link>
       </motion.div>
       
-      <div className="grid lg:grid-cols-2 min-h-screen">
+      <div className="grid lg:grid-cols-2 min-h-screen bg-neutral-950">
         {/* Left: Auth */}
         <motion.div 
           className="flex items-center justify-center p-8"
