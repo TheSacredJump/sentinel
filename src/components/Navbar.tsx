@@ -3,11 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+// import useAuth from '~/hooks/useAuth';
 
 const Navbar = () => {
   // Add state to control the animation
   const [isVisible, setIsVisible] = useState(false);
-
+  // const { isAuthenticated, session, status } = useAuth();
+  const isAuthenticated = true;
   // Trigger the animation after component mounts
   useEffect(() => {
     // Small delay to ensure smooth animation
@@ -51,9 +53,8 @@ const Navbar = () => {
           transition-all duration-700 delay-200
           ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}
         `}>
-          <Image src="/logo.png" alt="Sentinel Logo" width={30} height={30} />
-          <h1 className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-400 bg-clip-text text-transparent">
-            Sentinel
+          <h1 className="text-xl font-bold tracking-widest font-serif">
+            SENTINEL
           </h1>
         </div>
 
@@ -69,19 +70,20 @@ const Navbar = () => {
         </div>
         
         {/* Sign In Button - Fade in from right */}
-        <Link href="/sign-in" className={`
+          <Link href={isAuthenticated ? '/dashboard' : "/sign-in"} className={`
           flex items-center gap-6
           transition-all duration-700 delay-400
           ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}
         `}>
           <button className="
-            bg-emerald-400 text-neutral-950 px-4 py-2 rounded-full text-sm 
-            shadow-md font-medium transition-all hover:bg-emerald-500 
+            bg-gradient-to-r from-pink-400 to-violet-400 text-neutral-100 px-4 py-2 rounded-full text-sm 
+            shadow-md font-medium transition-all hover:bg-violet-500
             hover:shadow-lg active:scale-95
           ">
-            Sign In
+            {isAuthenticated ? 'Dashboard' : 'Sign In'}
           </button>
         </Link>
+        
       </div>
     </nav>
   );

@@ -126,7 +126,7 @@ const SignIn = () => {
               variants={itemVariants}
             >
               <motion.button
-                onClick={() => signIn('google')}
+                onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
                 className="w-full bg-white hover:bg-gray-50 text-gray-800 font-medium py-3 px-4 rounded-lg border shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center space-x-2"
                 whileHover={{ scale: 1.02, shadow: "0 4px 8px rgba(0,0,0,0.1)" }}
                 whileTap={{ scale: 0.98 }}
@@ -141,16 +141,16 @@ const SignIn = () => {
               variants={itemVariants}
             >
               By logging in or signing up, you agree to our{' '}
-              <a href="#" className="text-emerald-600 hover:text-emerald-700">Terms & Conditions</a>
+              <a href="#" className="text-violet-400 hover:text-violet-500">Terms & Conditions</a>
               {' '}and{' '}
-              <a href="#" className="text-emerald-600 hover:text-emerald-700">Privacy Policy</a>
+              <a href="#" className="text-violet-400 hover:text-violet-500">Privacy Policy</a>
             </motion.p>
           </div>
         </motion.div>
 
         {/* Right: Gradient + Testimonial */}
         <motion.div 
-          className="hidden lg:block bg-gradient-to-br from-emerald-400 to-emerald-600 p-8"
+          className="hidden lg:block bg-gradient-to-br from-pink-400 to-violet-500 p-8"
           variants={slideInVariants}
           initial="hidden"
           animate="visible"

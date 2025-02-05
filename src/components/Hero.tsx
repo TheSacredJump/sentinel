@@ -85,26 +85,49 @@ const Hero = () => {
   const dashboardOpacity = useTransform(scrollYProgress, [0, 0.2], [0.6, 1]);
 
   return (
-    <main className="bg-gradient-to-b from-transparent from-25% via-emerald-400/80 via-75% to-emerald-400 relative">
+    <main className="bg-gradient-to-b from-neutral-950 to-black relative">
       {/* Grid Background */}
-      <div 
+      {/* <div 
         className="absolute inset-0" 
         style={{
           backgroundImage: 
             'linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px)',
           backgroundSize: '50px 50px'
         }}
-      />
+      /> */}
       
-      <section className="min-h-screen max-w-7xl mx-auto flex flex-col items-center justify-center pt-48 relative">
+      <section className="min-h-screen mx-auto flex flex-col items-center justify-center pt-48 relative">
+        {/* Layered Ethereal Glow Effect */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Left Side Glow (Neon Pink) */}
+          <div className="absolute -left-1/4 top-1/4 w-96 h-full">
+            <div className="absolute inset-0 bg-pink-400/50 blur-[140px] rounded-full mix-blend-screen" />
+            <div className="absolute inset-0 bg-violet-400/30 blur-[160px] rounded-full mix-blend-screen transform translate-y-1/4" />
+          </div>
+
+          {/* Right Side Glow (Soft Purple) */}
+          <div className="absolute -right-1/4 top-1/3 w-96 h-full">
+            <div className="absolute inset-0 bg-violet-400/50 blur-[160px] rounded-full mix-blend-screen" />
+            <div className="absolute inset-0 bg-sky-400/30 blur-[140px] rounded-full mix-blend-screen transform -translate-y-1/4" />
+          </div>
+
+          {/* Center Glow (Ethereal Blue) */}
+          <div className="absolute left-1/2 top-1/2 -translate-y-1/5 -translate-x-1/2 w-full max-w-4xl h-96">
+            <div className="absolute inset-0 bg-sky-400/30 blur-[180px] rounded-full mix-blend-screen" />
+            <div className="absolute inset-0 bg-pink-400/40 blur-[160px] rounded-full mix-blend-screen" />
+          </div>
+        </div>
+
+
+
         <motion.div 
-          className="max-w-6xl mx-auto text-center space-y-6"
+          className="max-w-6xl mx-auto text-center space-y-6 relative z-10"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           <motion.h1 
-            className="text-8xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-neutral-400 via-neutral-50 to-neutral-400"
+            className="text-8xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-neutral-300 via-neutral-50 to-neutral-300"
             variants={textVariants}
           >
             Your Inbox, Your Control
@@ -119,7 +142,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.div 
-          className="flex items-center gap-4 relative mt-10"
+          className="flex items-center gap-4 relative mt-10 z-10"
           variants={buttonContainerVariants}
           initial="hidden"
           animate="visible"
@@ -170,7 +193,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.p 
-          className="mt-3 text-neutral-500 text-sm"
+          className="mt-3 text-neutral-500 text-sm relative z-10"
           variants={textVariants}
           initial="hidden"
           animate="visible"
@@ -180,14 +203,16 @@ const Hero = () => {
         </motion.p>
 
         {/* Enhanced Dashboard Preview with Scroll Animation */}
-        <motion.section 
-          className="mt-24 max-w-7xl w-full h-full bg-neutral-950 border-t border-r border-l border-neutral-800 rounded-t-xl mx-auto overflow-hidden"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: 'easeOut', delay: 0.8 }}
-        >
-          <Image src="/dashboard_preview.png" alt="Dashboard" width={1920} height={1080} className="mx-auto -mt-1" />
-        </motion.section>
+        <div className="relative w-full mt-24 z-10">
+          <motion.section 
+            className="relative max-w-7xl w-full h-full bg-neutral-950 border-t border-r border-l border-neutral-800 rounded-t-xl mx-auto overflow-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: 'easeOut', delay: 0.8 }}
+          >
+            <Image src="/dashboard_preview.png" alt="Dashboard" width={1920} height={1080} className="mx-auto -mt-1" />
+          </motion.section>
+        </div>
       </section>
     </main>
   );
