@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Mail, Star, Clock, AlertCircle, Archive, Trash2, Search, X, MessageCircle, Phone, Video, ChevronLeft, ChevronRight, Maximize2, Minimize2, Flag } from 'lucide-react';
+import { Mail, Star, Clock, AlertCircle, Archive, Trash2, Search, X, MessageCircle, Phone, Video, ChevronLeft, ChevronRight, Maximize2, Minimize2, Flag, PlusCircleIcon, PencilIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { dummyEmails } from '~/constants/dummyEmails';
 import Image from 'next/image';
@@ -132,6 +132,10 @@ const itemsPerPage = 25;
                     <span>{label}</span>
                   </button>
                 ))}
+              </div>
+              <div className='hover:scale-105 hover:cursor-pointer hover:shadow-md transition-all duration-300 flex items-center justify-center p-2 text-sm font-semibold text-neutral-50 rounded-lg bg-gradient-to-r from-pink-400 via-violet-400 to-sky-400'>
+                    <PencilIcon className="w-4 h-4 mr-2" />
+                    <h1>Compose Email</h1>
               </div>
             </div>
           </motion.div>
@@ -434,7 +438,7 @@ const itemsPerPage = 25;
         {/* Sidebar Toggles */}
         <button
           onClick={() => setLeftSidebarOpen(!leftSidebarOpen)}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-50 bg-neutral-900/50 p-1.5 rounded-r backdrop-blur-xl border border-l-0 border-neutral-800 text-neutral-400 hover:text-neutral-200"
+          className={`absolute left-0 top-1/2 transform ${leftSidebarOpen ? '-translate-x-7' : '-translate-x-3'} -translate-y-1/2 z-50 bg-neutral-900/50 p-1.5 rounded-r backdrop-blur-xl border ${leftSidebarOpen ? 'border-r-0' : 'border-l-0'} border-neutral-800 text-neutral-400 hover:text-neutral-200`}
         >
           {leftSidebarOpen ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
         </button>
