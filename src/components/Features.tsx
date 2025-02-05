@@ -248,7 +248,7 @@ const FeatureShowcase = () => {
 export default FeatureShowcase;
 
 const Card1 = () => (
-  <div className="rounded-full text-center bg-gradient-to-b from-neutral-950 to-neutral-900 p-3 px-14 shadow-lg hover:cursor-pointer hover:scale-105 transition-all duration-300">
+  <div className="rounded-full text-center bg-gradient-to-b text-neutral-50 from-neutral-950 to-neutral-900 p-3 px-14 shadow-lg hover:cursor-pointer hover:scale-105 transition-all duration-300">
       <h1 className="text-xl font-medium">Sort Emails</h1>
   </div>
 );
