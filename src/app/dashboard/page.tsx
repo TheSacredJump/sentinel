@@ -5,6 +5,7 @@ import { Mail, Star, Clock, AlertCircle, Archive, Trash2, Search, X, MessageCirc
 import { motion, AnimatePresence } from 'framer-motion';
 import { dummyEmails } from '~/constants/dummyEmails';
 import Image from 'next/image';
+import bgPattern from '/scenic-mountain.webp';
 
 export default function Dashboard() {
   const [selectedZone, setSelectedZone] = useState('all');
@@ -138,6 +139,8 @@ const ThemeToggle = () => (
 
   const filteredEmails = emails.filter(email => !email.read);
 
+  const bgImageOpacity = 0.3
+
   const EmailCard = ({ email }) => (
     <motion.div
       key={email.id}
@@ -234,6 +237,17 @@ const ThemeToggle = () => (
 
       {/* Main Content Area */}
       <div className="flex-1 relative">
+        {/* Background Pattern - Only visible in light mode */}
+        {(
+          <Image 
+            className={`absolute inset-0 pointer-events-none`}
+            // style={{ opacity: theme === 'dark' ? `${bgImageOpacity}` : `${1 - bgImageOpacity}` }}
+            style={{ opacity: 0 }}
+            src={"/scenic-mountain.webp"}
+            alt="Scenic Mountain"
+            fill
+          />
+        )}
         {/* Status Widget */}
         <div className={`absolute top-6 left-1/2 transform -translate-x-1/2 w-[95%] rounded-lg h-16 ${
             theme === 'dark' 
@@ -536,7 +550,7 @@ const themeConfig = {
     background: 'bg-gradient-to-b from-neutral-950 to-black',
     text: 'text-white',
     textSecondary: 'text-neutral-300',
-    cardBg: 'bg-neutral-900/50',
+    cardBg: 'bg-neutral-900',
     cardBorder: 'border-neutral-800',
     cardHover: 'hover:border-neutral-700',
     sidebarBg: 'bg-neutral-900/50',
@@ -555,7 +569,7 @@ const themeConfig = {
     background: 'bg-gradient-to-b from-blue-50 to-white',
     text: 'text-neutral-900',
     textSecondary: 'text-neutral-600',
-    cardBg: 'bg-white/70',
+    cardBg: 'bg-white',
     cardBorder: 'border-neutral-200',
     cardHover: 'hover:border-neutral-300',
     sidebarBg: 'bg-white/70',
