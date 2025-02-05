@@ -210,7 +210,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut', delay: 0.8 }}
           >
-            <Image src="/dashboard_preview.png" alt="Dashboard" width={1920} height={1080} className="mx-auto -mt-1" />
+            <Image src="/dashboard.png" alt="Dashboard" width={1920} height={1080} className="mx-auto -mt-1" />
           </motion.section>
         </div>
       </section>
