@@ -314,7 +314,7 @@ const itemsPerPage = 25;
             >
               <div className="flex flex-col h-[calc(100vh-20rem)]">
                 <div className="flex-1 overflow-y-auto">
-                  <div className="grid grid-cols-3 gap-4 mb-4">
+                  <div className={`grid ${leftSidebarOpen ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-4 mb-4`}>
                     {filteredEmails
                       .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
                       .map((email) => (
