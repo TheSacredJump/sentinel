@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Mail, Star, Clock, AlertCircle, Archive, Trash2, Search, X, MessageCircle, Phone, Video, ChevronLeft, ChevronRight, Maximize2, Minimize2, Flag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { dummyEmails } from '~/constants/dummyEmails';
+import Image from 'next/image';
 
 export default function Dashboard() {
   const [selectedZone, setSelectedZone] = useState('all');
@@ -109,7 +110,7 @@ const itemsPerPage = 25;
           >
             <div className="space-y-10">
               <div className="flex items-center space-x-2 px-2">
-                <Mail className="w-7 h-7 text-neutral-300" />
+                <Image src="/logo.png" alt="Sentinel Logo" width={24} height={24}/>
                 <span className="text-lg font-semibold text-neutral-200">Sentinel</span>
               </div>
 
