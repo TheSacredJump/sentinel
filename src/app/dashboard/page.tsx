@@ -68,7 +68,10 @@ const itemsPerPage = 25;
       onClick={() => handleEmailClick(email)}
     >
       <div className="flex justify-between items-start mb-2">
-        <span className="font-medium text-neutral-300">{email.sender}</span>
+        <div className='flex items-center space-x-2'>
+          <div className="w-8 h-8 rounded-full bg-neutral-900 flex items-center justify-center">{email.sender.charAt(0).toUpperCase()}</div>
+          <span className="font-medium text-neutral-300">{email.sender}</span>
+        </div>
         <div className="flex items-center space-x-2">
           <span className="text-sm text-neutral-500">{email.timestamp}</span>
           <button 
