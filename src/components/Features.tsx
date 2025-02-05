@@ -95,21 +95,21 @@ const FeatureShowcase = () => {
   const features = [
     {
       step: "Step-01",
-      icon: <SortAsc className="text-emerald-400 w-8 h-8" />,
+      icon: <SortAsc className="text-violet-400 w-8 h-8" />,
       title: "AI-Powered Sorting",
       description: "Take control of your inbox with our intelligent sorting system. Our AI automatically categorizes and prioritizes your emails, ensuring you never miss important messages while filtering out the noise.",
       card: <Card1 />
     },
     {
       step: "Step-02",
-      icon: <Sparkles className="text-emerald-400 w-8 h-8" />,
+      icon: <Sparkles className="text-violet-400 w-8 h-8" />,
       title: "Bulk Unsubscribe",
       description: "Clean up your inbox effortlessly with our one-click bulk unsubscribe feature. Quickly identify and remove yourself from unwanted newsletters and promotional emails, keeping your inbox clean and organized.",
       card: <Card2 />
     },
     {
       step: "Step-03",
-      icon: <WandSparklesIcon className="text-emerald-400 w-8 h-8" />,
+      icon: <WandSparklesIcon className="text-violet-400 w-8 h-8" />,
       title: "Custom Filters",
       description: "Create personalized email filtering rules that work for you. Set up sophisticated filters based on sender, content, or custom criteria to automatically organize incoming messages exactly how you want them.",
       card: <Card3 />
@@ -127,7 +127,7 @@ const FeatureShowcase = () => {
           variants={textContentVariants}
         >
           <motion.span 
-            className="bg-emerald-100 text-emerald-700 text-sm font-medium px-3 py-1 rounded-full inline-block mb-4"
+            className="bg-violet-100 text-violet-800 text-sm font-medium px-3 py-1 rounded-full inline-block mb-4"
             variants={badgeVariants}
           >
             New Feature
@@ -191,7 +191,7 @@ const FeatureShowcase = () => {
             >
               <div className="flex-1 flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
-                  <span className="text-emerald-400 text-sm font-medium">
+                  <span className="text-violet-400 text-sm font-medium">
                     {feature.step}
                   </span>
                   <div className="mt-2">
@@ -211,7 +211,7 @@ const FeatureShowcase = () => {
       
               {/* Feature Card */}
               <div className="hidden lg:block flex-shrink-0 w-2/5 rounded-xl">
-                <div className={`bg-emerald-950 rounded-xl p-6 min-h-64 ${index == 1 ? "h-64" : "h-full"} relative overflow-hidden flex justify-center items-center`}
+                <div className={`bg-pink-400 rounded-xl p-6 min-h-64 ${index == 1 ? "h-64" : "h-full"} relative overflow-hidden flex justify-center items-center`}
                     style={{
                       backgroundImage: `
                         linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
@@ -255,7 +255,7 @@ const Card1 = () => (
 
 const Card2 = () => (
   <div className="bg-none rounded-xl h-full px-4 w-full flex flex-col items-center">
-    <div className="absolute flex top-8 items-center gap-2 bg-gradient-to-r from-red-500 to-orange-500 p-3 px-5 rounded-full shadow-lg hover:scale-105 transition duration-300 hover:cursor-pointer">
+    <div className="absolute flex top-8 items-center gap-2 bg-gradient-to-r from-blue-500 to-sky-400 p-3 px-5 rounded-full shadow-lg hover:scale-105 transition duration-300 hover:cursor-pointer">
       <SparklesIcon className="w-5 h-5 text-white"/>
       <h1 className="text-white font-medium">Unsubscribe</h1>
       <SparklesIcon className="w-5 h-5 text-white"/>
@@ -281,8 +281,8 @@ const Card3 = () => (
   <div className="bg-none rounded-xl h-full px-4 w-full">
     <div className="bg-gradient-to-br from-neutral-950 to-neutral-950 rounded-2xl p-6 shadow-lg">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-emerald-500 font-semibold">Filter Builder</h2>
-        <button className="bg-neutral-100 text-black p-2 rounded-full hover:bg-emerald-300 transition-colors">
+        <h2 className="text-violet-400 font-semibold">Filter Builder</h2>
+        <button className="bg-neutral-100 text-black p-2 rounded-full hover:bg-violet-300 transition-colors">
           <PlusIcon className="w-4 h-4" />
         </button>
       </div>
@@ -290,7 +290,7 @@ const Card3 = () => (
       <div className="space-y-3">
         <div className="flex items-center justify-between bg-neutral-900 p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-emerald-400 rounded-full" />
+            <div className="w-2 h-2 bg-sky-400 rounded-full" />
             <span className="text-sm text-neutral-300">From: client@sentinel.com</span>
           </div>
           <XIcon className="w-4 h-4 text-gray-400 hover:text-gray-600 cursor-pointer" />
@@ -298,7 +298,7 @@ const Card3 = () => (
         
         <div className="flex items-center justify-between bg-neutral-900 p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-emerald-400 rounded-full" />
+            <div className="w-2 h-2 bg-pink-400 rounded-full" />
             <span className="text-sm text-neutral-300">Subject: contains "urgent"</span>
           </div>
           <XIcon className="w-4 h-4 text-gray-400 hover:text-gray-600 cursor-pointer" />
@@ -306,7 +306,7 @@ const Card3 = () => (
         
         <div className="flex items-center justify-between bg-neutral-900 p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-center gap-3">
-            <div className="w-2 h-2 bg-emerald-400 rounded-full" />
+            <div className="w-2 h-2 bg-pink-400 rounded-full" />
             <span className="text-sm text-neutral-300">Has: attachment</span>
           </div>
           <XIcon className="w-4 h-4 text-gray-400 hover:text-gray-600 cursor-pointer" />
@@ -314,16 +314,16 @@ const Card3 = () => (
       </div>
 
       <button className="w-full mt-4 bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-lg p-px text-xs font-semibold leading-6 text-white">
-        <span className="absolute inset-0 overflow-hidden rounded-lg">
-          <span className="absolute inset-0 rounded-lg bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(52,211,153,0.6)_0%,rgba(52,211,153,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-        </span>
+      <span className="absolute inset-0 overflow-hidden rounded-lg">
+        <span className="absolute inset-0 rounded-lg bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(244,114,182,0.6)_0%,rgba(167,139,250,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      </span>
         <div className="relative flex items-center justify-center z-10 rounded-lg bg-zinc-950 py-2 px-4 ring-1 ring-white/10">
           <span className="mr-2">Add Condition</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10.75 8.75L14.25 12L10.75 15.25" />
           </svg>
         </div>
-        <span className="absolute -top-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
+        <span className="absolute -top-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-purple-400/90 to-pink-400/0 transition-opacity duration-500 group-hover:opacity-40" />
       </button>
 
     </div>

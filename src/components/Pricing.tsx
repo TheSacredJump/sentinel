@@ -142,7 +142,7 @@ const Pricing = () => {
               key={index}
               className={`rounded-xl border shadow-sm p-8 bg-neutral-900 ${
                 plan.name === "Sentient" 
-                  ? "h-[110%] border-emerald-500 shadow-2xl shadow-emerald-200 ring-2 ring-emerald-800 bg-gradient-to-br from-emerald-800 from-25% via-emerald-500 via-50% to-emerald-800" 
+                  ? "h-[110%] shadow-xl border-none shadow-violet-500 bg-gradient-to-br from-pink-400 from-25% via-violet-500 via-50% to-sky-400" 
                   : "border-neutral-800"
               }`}
               variants={cardVariants}
