@@ -44,3 +44,11 @@ yarn-error.log*
 
 # idea files
 .idea
+
+
+/rust-backend/bert_model
+/rust-backend/bert_results
+/rust-backend/bert_tokenizer
+/rust-backend/mlb.pkl
+
+# ./rust-backend
