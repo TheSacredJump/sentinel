@@ -53,7 +53,7 @@ const Navbar = () => {
           transition-all duration-700 delay-200
           ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}
         `}>
-          <h1 className="text-xl font-bold tracking-widest font-serif">
+          <h1 className="text-xl text-neutral-50 font-bold tracking-widest font-serif">
             SENTINEL
           </h1>
         </div>
