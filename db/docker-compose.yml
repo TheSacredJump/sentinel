@@ -15,4 +15,4 @@ services:
 volumes:
   pgdata:
 
-# Install the docker dmg and make sure to add this to ~/.zprofile `export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"`
+# Install the docker dmg and make sure to add this to ~/.zprofile `export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
