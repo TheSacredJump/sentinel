@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.10.1",
+    "add": "^2.0.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cors": "^2.8.5",
@@ -30,15 +31,18 @@
     "motion": "^12.1.0",
     "next": "^15.0.1",
     "next-auth": "^4.24.11",
+    "pg": "^8.13.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
+    "yarn": "^1.22.22",
     "zod": "^3.23.3"
   },
   "devDependencies": {
     "@types/eslint": "^8.56.10",
     "@types/node": "^20.14.10",
+    "@types/pg": "^8.11.11",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^8.1.0",
