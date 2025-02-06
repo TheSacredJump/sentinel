@@ -1,76 +1,105 @@
-// RightSidebar.jsx
-import { AnimatePresence, motion } from "framer-motion";
-import { MessageCircle, Phone, Video } from "lucide-react";
+  // components/RightSidebar/index.tsx
+  import { AnimatePresence, motion } from "framer-motion";
+  import { MessageCircle, Phone, Video, UserCircle2, Flag, Settings, Bell } from "lucide-react";
+  import { useState } from "react";
+import { Profile } from "./RightSidebar/Profile";
+import { FlaggedMessages } from "./RightSidebar/FlaggedMessages";
 
-
-export const RightSidebar = ({ rightSidebarOpen, filteredEmails, handleEmailClick, selectedEmail, focusMode, theme, themeConfig }: any) => (
-    <AnimatePresence>
-      {rightSidebarOpen && (
-        <motion.aside 
-          className={`fixed right-0 top-0 bottom-0 w-[30%] ${themeConfig[theme].rightSidebarBg} backdrop-blur-xl border-l ${themeConfig[theme].cardBorder} p-6 z-20`}
-          initial={{ x: "100%" }}
-          animate={{ x: 0 }}
-          exit={{ x: "100%" }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        >
-          <div className="mb-8">
-            <h2 className={`text-2xl font-semibold ${themeConfig[theme].text} mb-2`}>Welcome back, Sathya! 👋</h2>
-            <p className={`${themeConfig[theme].textSecondary} text-sm`}>
-              You have {filteredEmails.filter(e => e.flagged).length} flagged messages waiting for your attention.
-            </p>
-            <div className={`mt-4 p-3 ${themeConfig[theme].buttonBg} rounded-lg border ${themeConfig[theme].cardBorder}`}>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full" />
-                  <span className={`text-sm ${themeConfig[theme].text}`}>Active Status</span>
-                </div>
-                <span className={`text-xs ${themeConfig[theme].textSecondary}`}>Online</span>
-              </div>
-            </div>
-          </div>
+interface RightSidebarProps {
+    rightSidebarOpen: boolean;
+    filteredEmails: any[];
+    handleEmailClick: (email: any) => void;
+    selectedEmail: any;
+    focusMode: boolean;
+    theme: string;
+    themeConfig: any;
+  }
   
-          <div className="mb-6">
-            <h2 className={`text-lg font-semibold ${themeConfig[theme].textPrimary} mb-4`}>Flagged Messages</h2>
-            <div className="space-y-3">
-              {filteredEmails.filter(email => email.flagged).map((email) => (
-                <motion.div 
-                  key={email.id}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -20, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  onClick={() => handleEmailClick(email)}
-                  className={`${themeConfig[theme].cardBg} backdrop-blur-xl p-3 rounded-lg border ${themeConfig[theme].cardBorder} cursor-pointer hover:border-neutral-700 transition-all`}
-                  whileHover={{ scale: 1.01, y: -1 }}
+  export const RightSidebar = ({ rightSidebarOpen, filteredEmails, handleEmailClick, selectedEmail, focusMode, theme, themeConfig }: RightSidebarProps) => {
+    const [activeView, setActiveView] = useState('flagged');
+  
+    const navigationItems = [
+      { id: 'profile', icon: UserCircle2, label: 'Profile' },
+      { id: 'flagged', icon: Flag, label: 'Flagged' },
+      { id: 'notifications', icon: Bell, label: 'Notifications' },
+      { id: 'settings', icon: Settings, label: 'Settings' }
+    ];
+  
+    const renderContent = () => {
+      switch (activeView) {
+        case 'profile':
+          return <Profile theme={theme} themeConfig={themeConfig} />;
+        case 'flagged':
+          return (
+            <FlaggedMessages 
+              filteredEmails={filteredEmails}
+              handleEmailClick={handleEmailClick}
+              theme={theme}
+              themeConfig={themeConfig}
+            />
+          );
+        default:
+          return <FlaggedMessages 
+            filteredEmails={filteredEmails}
+            handleEmailClick={handleEmailClick}
+            theme={theme}
+            themeConfig={themeConfig}
+          />;
+      }
+    };
+  
+    return (
+      <AnimatePresence>
+        {rightSidebarOpen && (
+          <motion.aside 
+            className={`fixed right-0 top-0 bottom-0 w-[30%] ${themeConfig[theme].rightSidebarBg} backdrop-blur-xl border-l ${themeConfig[theme].cardBorder} p-6 z-20`}
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          >
+            {/* Navigation Icons */}
+            <div className="flex items-center justify-around mb-8 pb-4 border-b border-neutral-800">
+              {navigationItems.map(({ id, icon: Icon, label }) => (
+                <button
+                  key={id}
+                  onClick={() => setActiveView(id)}
+                  className={`p-2 rounded-lg transition-all ${
+                    activeView === id 
+                      ? `${themeConfig[theme].buttonBg} text-white`
+                      : `text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/50`
+                  }`}
+                  title={label}
                 >
-                  <div className="flex justify-between items-start mb-1">
-                    <span className={`font-medium ${themeConfig[theme].textPrimary} text-sm`}>{email.sender}</span>
-                    <span className={`text-xs ${themeConfig[theme].textSecondary}`}>{email.timestamp}</span>
-                  </div>
-                  <h3 className={`font-semibold ${themeConfig[theme].textPrimary} text-sm mb-1`}>{email.subject}</h3>
-                  <p className={`text-xs ${themeConfig[theme].textSecondary} line-clamp-1`}>{email.preview}</p>
-                </motion.div>
+                  <Icon className="w-5 h-5" />
+                </button>
               ))}
             </div>
-          </div>
   
-          {selectedEmail && !focusMode && (
-            <div className="border-t border-neutral-800 pt-4">
-              <h3 className="text-sm font-medium text-neutral-500 mb-3">Quick Actions</h3>
-              <div className="flex space-x-2">
-                <button className="p-2 rounded text-neutral-400 hover:bg-neutral-800/50 transition-colors">
-                  <MessageCircle className="w-5 h-5" />
-                </button>
-                <button className="p-2 rounded text-neutral-400 hover:bg-neutral-800/50 transition-colors">
-                  <Phone className="w-5 h-5" />
-                </button>
-                <button className="p-2 rounded text-neutral-400 hover:bg-neutral-800/50 transition-colors">
-                  <Video className="w-5 h-5" />
-                </button>
-              </div>
+            {/* Content Area */}
+            <div className="h-[calc(100vh-8rem)] overflow-y-auto">
+              {renderContent()}
             </div>
-          )}
-        </motion.aside>
-      )}
-    </AnimatePresence>
-  );
+  
+            {/* Quick Actions */}
+            {selectedEmail && !focusMode && (
+              <div className="border-t border-neutral-800 pt-4 mt-4">
+                <h3 className="text-sm font-medium text-neutral-500 mb-3">Quick Actions</h3>
+                <div className="flex space-x-2">
+                  <button className="p-2 rounded text-neutral-400 hover:bg-neutral-800/50 transition-colors">
+                    <MessageCircle className="w-5 h-5" />
+                  </button>
+                  <button className="p-2 rounded text-neutral-400 hover:bg-neutral-800/50 transition-colors">
+                    <Phone className="w-5 h-5" />
+                  </button>
+                  <button className="p-2 rounded text-neutral-400 hover:bg-neutral-800/50 transition-colors">
+                    <Video className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            )}
+          </motion.aside>
+        )}
+      </AnimatePresence>
+    );
+  };
