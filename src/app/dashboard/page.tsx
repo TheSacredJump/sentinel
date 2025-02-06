@@ -12,6 +12,7 @@ import { EmailListView } from '~/components/EmailListView';
 import { EmailDetailView } from '~/components/EmailDetailView';
 import { LeftSidebar } from '~/components/LeftSidebar';
 import { RightSidebar } from '~/components/RightSidebar';
+import { Email } from '~/types/email';
 
 export default function Dashboard() {
   // State management
@@ -42,7 +43,7 @@ export default function Dashboard() {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
-  const handleEmailClick = (email) => {
+  const handleEmailClick = (email: Email) => {
     setEmails(emails.map(e => 
       e.id === email.id ? { ...e, read: true } : e
     ));
@@ -50,14 +51,14 @@ export default function Dashboard() {
     setFocusMode(true);
   };
 
-  const handleFlagEmail = (e, emailId) => {
+  const handleFlagEmail = (e: React.MouseEvent, emailId: number) => {
     e.stopPropagation();
     setEmails(emails.map(email => 
       email.id === emailId ? { ...email, flagged: !email.flagged } : email
     ));
   };
 
-  const handleDismissEmail = (emailId) => {
+  const handleDismissEmail = (emailId: number) => {
     setEmails(emails.map(email => 
       email.id === emailId ? { ...email, read: true } : email
     ));

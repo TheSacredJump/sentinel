@@ -1,9 +1,10 @@
   // components/RightSidebar/index.tsx
   import { AnimatePresence, motion } from "framer-motion";
-  import { MessageCircle, Phone, Video, UserCircle2, Flag, Settings, Bell } from "lucide-react";
+  import { MessageCircle, Phone, Video, UserCircle2, Flag, Settings, Bell, Sparkles } from "lucide-react";
   import { useState } from "react";
 import { Profile } from "./RightSidebar/Profile";
 import { FlaggedMessages } from "./RightSidebar/FlaggedMessages";
+import AIEmailAssistant from "./RightSidebar/AI";
 
 interface RightSidebarProps {
     rightSidebarOpen: boolean;
@@ -21,7 +22,7 @@ interface RightSidebarProps {
     const navigationItems = [
       { id: 'profile', icon: UserCircle2, label: 'Profile' },
       { id: 'flagged', icon: Flag, label: 'Flagged' },
-      { id: 'notifications', icon: Bell, label: 'Notifications' },
+      { id: 'AI', icon: Sparkles, label: 'Notifications' },
       { id: 'settings', icon: Settings, label: 'Settings' }
     ];
   
@@ -38,6 +39,8 @@ interface RightSidebarProps {
               themeConfig={themeConfig}
             />
           );
+        case 'AI':
+          return <AIEmailAssistant theme={theme} themeConfig={themeConfig} />;
         default:
           return <FlaggedMessages 
             filteredEmails={filteredEmails}
